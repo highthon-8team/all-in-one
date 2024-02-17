@@ -4,7 +4,8 @@ import { format, getDate } from "date-fns";
 import { ko } from "date-fns/locale";
 import { clsx } from "clsx";
 import dream from "../../_assets/dream.png";
-import none from "../../_assets/none.png";
+import left from "../../_image/left_arrow.svg";
+import right from "../../_image/right_arrow.svg";
 import Image from "next/image";
 const Calender = () => {
   const { headers, body, navigation, year, month } = useCalendar();
@@ -12,12 +13,16 @@ const Calender = () => {
   return (
     <table className="w-full flex flex-col gap-5">
       <thead className="w-full">
-        <tr className="w-full flex justify-center gap-[10px] pb-5">
-          <td onClick={navigation.toPrev}>{"<"}</td>
-          <td className="text-lg font-medium">
-            {year}.{month + 1}
+        <tr className="w-full flex justify-center items-center gap-[10px] pb-5">
+          <td onClick={navigation.toPrev}>
+            <Image src={left} alt="" />
           </td>
-          <td onClick={navigation.toNext}>{">"}</td>
+          <td className="text-lg font-medium">
+            {year}년 {month + 1}월
+          </td>
+          <td onClick={navigation.toNext}>
+            <Image src={right} alt="" />
+          </td>
         </tr>
         <tr className="w-full max-w-full grid grid-cols-7">
           {headers.weekDays.map(({ key, value }) => (

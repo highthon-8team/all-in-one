@@ -14,7 +14,7 @@ export default function MainPage() {
           <Image src={profile} alt="Profile picture" />{" "}
         </div>
       </div>
-      <div className="w-full">
+      <div className="w-full mt-2">
         <Calendar />
       </div>
       <Link
