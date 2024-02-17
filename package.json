@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:setting": "docker-compose up -d"
+    "db:init": "docker-compose up -d",
+    "db:push": "npx prisma db push",
+    "prisma:generate": "npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "5.9.1",
