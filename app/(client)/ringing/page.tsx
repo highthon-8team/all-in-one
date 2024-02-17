@@ -1,7 +1,6 @@
 import Image from "next/image";
 import memo from "../_image/memo.svg";
 import alarmOff from "../_image/alarm_off.svg";
-import plus from "../_image/plus.svg";
 
 export default function RingingPage() {
   return (
