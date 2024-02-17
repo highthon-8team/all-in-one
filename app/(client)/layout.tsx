@@ -12,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="kr">
-      <body>{children}</body>
+      <body className="flex flex-col items-center justify-center p-4">
+        {children}
+      </body>
     </html>
   );
 }
