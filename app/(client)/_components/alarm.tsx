@@ -1,14 +1,16 @@
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
 
 const AlarmClock = () => {
   const [clockTime, setClockTime] = useState("00:00:00");
   const [alarmTime, setAlarmTime] = useState("0");
   const [status, setStatus] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (status && clockTime === alarmTime) {
-      console.log("get up", clockTime, alarmTime);
+      // console.log("get up", clockTime, alarmTime);
+      router.push("/ringing");
       setStatus(false);
     }
   }, [clockTime, alarmTime, status]);
@@ -28,7 +30,7 @@ const AlarmClock = () => {
     setClockTime(clockFormat);
   };
 
-  const handleAlarmTimeChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleAlarmTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("alarm time: ", e.target.value);
     setAlarmTime(e.target.value);
   };
@@ -46,6 +48,14 @@ const AlarmClock = () => {
     setInterval(updateClockTime, 1000);
   }, []);
 
+  useEffect(() => {
+    console.log(alarmTime);
+  }, [alarmTime]);
+
+  useEffect(() => {
+    handleToggle();
+  }, []);
+
   return (
     <div>
       <div className="wrapper">
@@ -58,13 +68,11 @@ const AlarmClock = () => {
             onChange={handleAlarmTimeChange}
           />
         </div>
-        <button onClick={handleToggle}>
-          {status ? "Stop Alarm" : "Start Alarm"}
-        </button>
+        <button onClick={handleToggle}>{status ? "Stop" : "Start"}</button>
         <button onClick={handleReset}>Reset Alarm</button>
       </div>
     </div>
-    );
+  );
 };
 
 export default AlarmClock;
