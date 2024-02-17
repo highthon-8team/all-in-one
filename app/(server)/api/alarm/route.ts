@@ -9,11 +9,14 @@ import { parseQueryString } from "../_utils/queryString";
 export async function PATCH(req: NextRequest) {
   try {
     const { startedAt } = await req.json();
+    console.log(startedAt)
     const querystringObj = parseQueryString(req.url);
-    const alarm = await updateAlarm(Number(querystringObj.alarmId), startedAt);
+    console.log(querystringObj)
+    const alarm = await updateAlarm(startedAt, Number(querystringObj.alarmId));
 
     return NextResponse.json({ message: "알람 설정 성공", data: alarm });
   } catch (error) {
+    console.log(error)
     return NextResponse.json({ message: "설정 실패" });
   }
 }
@@ -21,7 +24,7 @@ export async function PATCH(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const { userId } = await req.json();
-    const alarm = await createAlarm(userId);
+    const alarm = await createAlarm(Number(userId));
 
     return NextResponse.json({ message: "알람 생성 성공", data: alarm });
   } catch (error) {
