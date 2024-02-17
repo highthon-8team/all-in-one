@@ -1,5 +1,9 @@
+"use client";
+
+import AlarmClock from "../_components/alarm";
+
 export default function AlarmPage() {
   return (
-    <div></div>
+    <div><AlarmClock /></div>
   );
 }
