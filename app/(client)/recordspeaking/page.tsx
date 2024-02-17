@@ -26,9 +26,11 @@ export default function RecordSpeakingPage() {
       </h1>
 
       {isSaved ? (
-        <div className="w-[100%]" onMouseUp={stop}>
-          {voice}
-        </div>
+        <textarea
+          className="w-[100%] h-[300px] bg-transparent color-[#000] p-5 text-sm border-solid border-2 border-[#FFF]-400 rounded-md"
+          onMouseUp={stop}
+          defaultValue={voice}
+        />
       ) : (
         <div className="mx-auto w-[230px] h-[230px] rounded-full bg-[#7F30FF]">
           <div className="mx-auto my-[10px] pt-[16px] w-[210px] h-[210px] rounded-full bg-[#1E1E1E]">
