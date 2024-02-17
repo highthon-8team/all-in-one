@@ -51,6 +51,10 @@ export default function RecordSpeakingPage() {
           </div>
         </div>
       )}
+
+      <button className="w-[100%] h-[60px] bg-[#7F30FF] mt-8 font-light text-[1.4rem] rounded-md">
+        저장하기
+      </button>
       {listening && <span>음성인식 활성화 중 ...</span>}
     </div>
   );
