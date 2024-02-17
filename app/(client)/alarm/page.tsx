@@ -26,9 +26,11 @@ export default function AlarmPage() {
         <Image src={illustrate} alt="" />
       </div>
 
-      <div className="flex items-center justify-center border border-white fixed rounded-full w-32 h-10 bg-transparent bottom-32">
-        알람 수정
-      </div>
+      <Link href="/alarm/modify" className="fixed bottom-32">
+        <div className="flex items-center justify-center border border-white rounded-full w-32 h-10 bg-transparent">
+          알람 수정
+        </div>
+      </Link>
     </>
   );
 }
