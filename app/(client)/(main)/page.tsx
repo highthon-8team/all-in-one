@@ -3,6 +3,7 @@ import plusBold from "../_image/plus_bold.svg";
 import snoozWhite from "../_image/snooz_white.svg";
 import profile from "../_image/profile.svg";
 import Link from "next/link";
+import Calendar from "../_components/calendar/Calendar";
 
 export default function HistoryPage() {
   return (
@@ -13,7 +14,9 @@ export default function HistoryPage() {
           <Image src={profile} alt="Profile picture" />{" "}
         </div>
       </div>
-      <div className="w-full"></div>
+      <div className="w-full">
+        <Calendar />
+      </div>
       <Link
         href="/alarm"
         className="fixed flex justify-end items-center self-end bottom-10"
