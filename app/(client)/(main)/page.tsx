@@ -5,7 +5,7 @@ import profile from "../_image/profile.svg";
 import Link from "next/link";
 import Calendar from "../_components/calendar/Calendar";
 
-export default function HistoryPage() {
+export default function MainPage() {
   return (
     <>
       <div className="flex w-full justify-between">

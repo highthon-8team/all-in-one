@@ -1,7 +1,7 @@
 import Image from "next/image";
 import snooz from "../_image/snooz_logo.svg";
 
-export default function RingingPage() {
+export default function LoginPage() {
   return (
     <>
       <div className="flex flex-col w-full h-screen justify-center items-center gap-4">

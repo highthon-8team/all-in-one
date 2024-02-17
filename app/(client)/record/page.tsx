@@ -5,7 +5,7 @@ import mic from "../_image/mic.png";
 import keyboard from "../_image/keyboard.png";
 import Link from "next/link";
 
-export default function RingingPage() {
+export default function RecordPage() {
   return (
     <>
       <div className="flex flex-col gap-4 self-start text-3xl font-bold w-full whitespace-nowrap mt-32">
