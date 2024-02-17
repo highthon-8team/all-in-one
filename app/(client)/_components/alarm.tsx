@@ -49,8 +49,6 @@ const AlarmClock = () => {
   return (
     <div>
       <div className="wrapper">
-        <h1>Alarm Clock</h1>
-
         <div className="containt">
           <h2>{clockTime}</h2>
           <input

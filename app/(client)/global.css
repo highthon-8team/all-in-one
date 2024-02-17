@@ -1,0 +1,25 @@
+@import url("_fonts/pretendardvariable.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Pretendard Variable";
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.placeholder-custom::placeholder {
+  padding-left: 10px;
+  color: #b4b4b4;
+}
+
+.placeholder-custom::-ms-input-placeholder {
+  padding-left: 10px;
+  color: #b4b4b4;
+}
