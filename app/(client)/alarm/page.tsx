@@ -5,8 +5,17 @@ import bracket from "../_image/bracket.svg";
 import plus from "../_image/plus.svg";
 import illustrate from "../_image/illustrate.svg";
 import Link from "next/link";
+import { useFetch } from "../_hooks/useFetch";
+import { userIdCookie } from "../_utils/userId";
+import { format } from "date-fns";
 
 export default function AlarmPage() {
+  const userId = userIdCookie.get();
+  const { data } = useFetch(`/api/alarm?userId=${userId}`, {
+    method: "get",
+  });
+  if (!data) return;
+
   return (
     <>
       <div className="flex justify-between w-full">
@@ -17,10 +26,13 @@ export default function AlarmPage() {
         <Image src={plus} alt="" className="opacity-0" />
       </div>
       <div className="flex mt-20 gap-2">
-        <span className="text-5xl font-medium">9:30</span>
-        <span className="text-base self-end">PM</span>
+        <span className="text-5xl font-medium">
+          {format(data?.data.started_at, "hh:mm")}
+        </span>
+        <span className="text-base self-end">
+          {format(data?.data.started_at, "aa")}
+        </span>
       </div>
-      <div className="text-lg text-[#B4B4B4] my-4">알람 제목</div>
 
       <div className="w-full mt-20 flex items-center justify-center">
         <Image src={illustrate} alt="" />

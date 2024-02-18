@@ -5,8 +5,8 @@ export async function POST(req: Request) {
   const { userId, password } = await req.json();
 
   const user = await findUserByUserId(userId);
-
+  console.log(user, password, user?.password === password);
   if (user?.password === password)
     return NextResponse.json({ message: "로그인 성공", userId: user?.id });
-  else return NextResponse.json({ message: "로그인 실패" });
+  else return NextResponse.json({ message: "로그인 실패" }, { status: 401 });
 }

@@ -1,17 +1,17 @@
 import prisma from "../_lib/prisma";
 
-export function createAlarm(userId: number) {
+export function createAlarm(userId: number, startedAt: string) {
   return prisma.alarm.create({
     data: {
       userId: userId,
-      started_at: new Date("2025-01-05T16:28:33.983Z"),
+      started_at: new Date(startedAt),
     },
   });
 }
-export function findAlarmById(alarmId: number) {
+export function findAlarmById(userId: number) {
   return prisma.alarm.findFirst({
     where: {
-      id: alarmId,
+      userId: userId,
     },
   });
 }

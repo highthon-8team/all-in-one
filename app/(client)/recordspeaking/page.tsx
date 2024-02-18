@@ -4,11 +4,15 @@ import { useState } from "react";
 import Image from "next/image";
 import recordVoice from "../_image/recordVoice.svg";
 import { useSpeechRecognition } from "react-speech-kit";
+import { instance } from "../_utils/instance";
+import { userIdCookie } from "../_utils/userId";
+import { useRouter } from "next/navigation";
+import { AxiosError } from "axios";
 
 export default function RecordSpeakingPage() {
   const [voice, setVoice] = useState("");
   const [isSaved, setIsSaved] = useState(false);
-
+  const router = useRouter();
   const { listen, listening, stop } = useSpeechRecognition({
     onResult: (result: string) => {
       // 음성인식 결과가 value 상태값으로 할당됩니다.
@@ -16,6 +20,25 @@ export default function RecordSpeakingPage() {
       setIsSaved(true);
     },
   });
+
+  const onSubmit = async () => {
+    const userId = userIdCookie.get();
+    try {
+      await instance.post("/dream", {
+        userId: userId,
+        dreamText: voice,
+      });
+      alert("저장에 성공하였습니다!");
+      router.push("/");
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        if (e.status === 500)
+          return alert("꿈 저장은 하루에 한번만 가능합니다.");
+
+        alert("저장에 실패하였습니다.");
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col gap-4 self-start text-3xl font-bold w-full whitespace-nowrap mt-32">
@@ -31,8 +54,12 @@ export default function RecordSpeakingPage() {
             className="w-[100%] h-[300px] bg-transparent color-[#000] p-5 text-sm border-solid border-2 border-[#FFF]-400 rounded-md"
             onMouseUp={stop}
             defaultValue={voice}
+            onChange={(e) => setVoice(e.target.value)}
           />
-          <button className="w-[100%] h-[60px] bg-[#7F30FF] mt-8 font-light text-[1.4rem] rounded-md">
+          <button
+            onClick={onSubmit}
+            className="w-[100%] h-[60px] bg-[#7F30FF] mt-8 font-light text-[1.4rem] rounded-md"
+          >
             저장하기
           </button>
         </div>

@@ -14,9 +14,14 @@
   "dependencies": {
     "@h6s/calendar": "^2.0.1",
     "@prisma/client": "5.9.1",
+    "@types/lodash.merge": "^4.6.9",
+    "axios": "^1.6.7",
     "clsx": "^2.1.0",
+    "cookies-next": "^4.1.1",
     "date-fns": "^3.3.1",
+    "lodash.merge": "^4.6.2",
     "next": "^14.1.0",
+    "qs": "^6.11.2",
     "react": "^18",
     "react-dom": "^18",
     "react-speech-kit": "^3.0.1"
